@@ -1,6 +1,16 @@
-import flask, json
+import os
+
+try:
+    import flask, json
+    from flask import request
+except :
+    print("正在安装flask模块，若失败请手动输入‘pip install flask’安装")
+    os.system('pip install flask')
+    import flask, json
+    from flask import request
+
 import random
-from flask import request
+
 
 def BeginSend(PhoneNum,AccessKeyId,AccessSecret,SignName,TemplateCode):
     from aliyunsdkcore.client import AcsClient
