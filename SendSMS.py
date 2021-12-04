@@ -1,23 +1,24 @@
-import os
+# _*_ coding: utf-8 _*_
+"""
+Time:     2020-07-05
+Author:   inite.cn
+File:     SendSMS.py
+Describe: Use SMS messages to verify user's identity from Unreal,
+marketplace link: https://www.unrealengine.com/marketplace/zh-CN/product/phoneauthcode
+"""
 
-try:
-    import flask, json
-    from flask import request
-except :
-    print("正在安装flask模块，若失败请手动输入‘pip install flask’安装")
-    os.system('pip install flask')
-    import flask, json
-    from flask import request
+import json,random,flask
+from aliyunsdkcore.client import AcsClient
+from aliyunsdkcore.request import CommonRequest
 
-import random
-
+# 生成验证码的长度
+VerificationLen = 4
 
 def BeginSend(PhoneNum,AccessKeyId,AccessSecret,SignName,TemplateCode):
-    from aliyunsdkcore.client import AcsClient
-    from aliyunsdkcore.request import CommonRequest
+
     client = AcsClient(AccessKeyId, AccessSecret, 'cn-hangzhou')
     # 生成验证码
-    authCode = str(random.randint(1000, 9999))
+    authCode = str(random.randint(1000, (10**VerificationLen-1)))
     dict = {'code': authCode}
     request = CommonRequest()
     request.set_accept_format('json')
@@ -47,7 +48,7 @@ server = flask.Flask(__name__)
 # 发送短信验证码
 @server.route("/SendM", methods=['post'])
 def SendM():
-    cjson = request.get_json()
+    cjson = flask.request.get_json()
     PhoneNum = cjson['PhoneNum']
     AccessKeyId = cjson['AccessKeyId']
     AccessSecret = cjson['AccessSecret']
