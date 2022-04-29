@@ -17,7 +17,7 @@ python -m pip install --upgrade pip
 pip3 install flask
 pip3 install aliyun-python-sdk-core 
 pip3 install aliyun-python-sdk-ecs 
-python3 SendSMS.py
+nohup python3 SendSMS.py >> ./log.SendSMS 2>&1 &
 ```
 
 
