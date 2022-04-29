@@ -14,6 +14,7 @@ documentation：https://inite.blog.csdn.net/article/details/107199014
 
 ```shell
 python -m pip install --upgrade pip
+pip3 install flask
 pip3 install aliyun-python-sdk-core 
 pip3 install aliyun-python-sdk-ecs 
 python3 SendSMS.py
