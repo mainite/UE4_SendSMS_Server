@@ -57,16 +57,8 @@ def SendM():
     resu = BeginSend(PhoneNum,AccessKeyId,AccessSecret,SignName,TemplateCode)
     return resu
 
-def PrintLogo():
-    print("\n\n\n")
-    print("██╗███╗   ██╗██╗████████╗████████╗████████╗")
-    print("██║████╗  ██║██║╚══██╔══╝╚══██╔══╝╚══██╔══╝")
-    print("██║██╔██╗ ██║██║   ██║      ██║      ██║   ")
-    print("██║██║╚██╗██║██║   ██║      ██║      ██║   ")
-    print("██║██║ ╚████║██║   ██║  ██╗ ██║      ██║   ")
-    print("╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝  ╚═╝ ╚═╝      ╚═╝   ")
-    print("\n\n\n")
+
 
 if __name__ == '__main__':
-    PrintLogo()
+
     server.run(debug=True, port=1234, host='0.0.0.0')  # 指定端口、host,0.0.0.0代表不管几个网卡，任何ip都可以访问
